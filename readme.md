@@ -1,3 +1,3 @@
 # Tech News:
 
-- A Powershell Script that uses the Youtube API to instantly open youtube to the latest video uploaded by Google
+- A Powershell Script that scrapes Google's Youtube channel for the latest uploaded video and instantly plays it
