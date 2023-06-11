@@ -1,17 +1,15 @@
-$key = Get-Content ./info.txt
+$key = Get-Content "E:\Code\Tech News\info.txt"
 
-$req = Invoke-RestMethod "https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCFtEEv80fQVKkD4h1PF-Xqw&maxResults=1&order=date&type=video&key=$key"
+$req = Invoke-RestMethod "https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UC0m-80FnNY2Qb7obvTL_2fA&channelType=any&maxResults=1&order=date&key=$key"
 
 $today = Get-Date -Format "yyyy-MM-dd"
 $yesterday = (Get-Date).AddDays(-1).ToString('yyyy-MM-dd')
-$yesterday
-
+$twodaysago = (Get-Date).AddDays(-2).ToString('yyyy-MM-dd')
 
 $vidDate = $req.items.snippet.publishTime -replace "T.*"
-$vidDate
 
 $videoUrl = $req.items.id.videoId
 
-if($vidDate -eq $today -or $vidDate -eq $yesterday ){
+if($vidDate -eq $today -or $vidDate -eq $yesterday -or $vidDate -eq $twodaysago ){
     Start-Process msedge https://www.youtube.com/watch?v=$videoUrl
 }
