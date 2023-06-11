@@ -11,6 +11,6 @@ $vidDate = $req.items.snippet.publishTime -replace "T.*"
 $videoUrl = $req.items.id.videoId
 
 if($vidDate -eq $today -or $vidDate -eq $yesterday -or $vidDate -eq $twodaysago ){
-    Start-Sleep 5
+    Start-Sleep 2
     Start-Process msedge https://www.youtube.com/watch?v=$videoUrl
 }
