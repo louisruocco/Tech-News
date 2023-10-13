@@ -8,15 +8,8 @@ $yesterday = (Get-Date).AddDays(-1).ToString("yyyy-MM-dd")
 
 $AzureVidDate = $azure.items.snippet.publishTime -replace "T.*"
 $AzurevideoUrl = $azure.items.id.videoId
-$PixelVidDate = $pixel.items.snippet.publishTime -replace "T.*"
-$PixelVideoUrl = $pixel.items.id.videoId
 
 if($AzureVidDate -eq $today -or $AzureVidDate -eq $yesterday){
     Start-Sleep 2
     Start-Process msedge https://www.youtube.com/watch?v=$AzurevideoUrl
-}
-
-if($PixelVidDate -eq $today -or $PixelVidDate -eq $yesterday){
-    Start-Sleep 2
-    Start-Process msedge "--new-tab https://www.youtube.com/watch?v=$PixelVideoUrl"
 }
